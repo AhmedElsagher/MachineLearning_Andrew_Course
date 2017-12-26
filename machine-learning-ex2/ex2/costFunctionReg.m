@@ -26,13 +26,15 @@ oldcost=(-y)'*log(h)-(1-y)'*log(1-h);
 regTerm=(lambda/(2*m)) * (theta.^2);
 J2 = sum(regTerm)-regTerm(1);  % we do not regulize the theta(0)
 
-J=((1/m).*sum(oldcost))+J2;
+J=((1/m).*oldcost)+J2;
+
+
 n=length(theta);
-grad(1)=1/m.*(sum(X'(1,:)*h-X'(1,:)*y));
+grad(1)=1/m*sum(X'(1,:)*h-X'(1,:)*y);
 
 
-for j=2:n
-	grad(j)=(1/m).*(sum(X'(j,:)*h-X'(j,:)*y)+lambda.*theta(j,1));
+for i=2:n
+	grad(i)=(1/m)*(sum(X'(i,:)*h-X'(i,:)*y)+lambda.*theta(i,1));
 end
 
 

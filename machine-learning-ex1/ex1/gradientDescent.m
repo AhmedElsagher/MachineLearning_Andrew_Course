@@ -16,14 +16,12 @@ for iter = 1:num_iters
     % Hint: While debugging, it can be useful to print out the values
     %       of the cost function (computeCost) and gradient here.
     %
-
+% no space required it's just for readabilty
 h=X* theta;
-theta0= theta(1)-(alpha/m)*sum( (h-y) .* X(:,1));
-theta1= theta(2)-(alpha/m)*sum((h-y) .* X(:,2));
-theta= [theta0;    theta1];
-
-
-
+% you can also use sum( (h-y) .* X(:,1)
+theta1= theta(1)-(alpha/m)*sum( sum(h-y) * X(:,1));%it's theta 0 but Ocatave start with one
+theta2= theta(2)-(alpha/m)*sum(sum(h-y) * X(:,2));%it's theta 1 but Ocatave start with one
+theta= [theta1;    theta2];
 
 
     % ============================================================
